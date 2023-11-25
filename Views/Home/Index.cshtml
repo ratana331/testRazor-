@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+
+    //Declare variable 
+    var name = "Dara";
+    var age = 18;
+    string qty = "5";
+    double price = 70;
+    double total = qty.AsInt() * price; //AsInt() is used to convert string to integer.
+
+    var txt = "";
+    if(DateTime.Now.Hour<=10)
+    {
+        txt = "Good Morning";
+    }else if(DateTime.Now.Hour>10 & DateTime.Now.Hour <= 13)
+    {
+        txt = "Hello";
+    }
+    else
+    {
+        txt = "Good Afternoon";
+    }
+
+}
+
+<h2>Index</h2>
+<h1>Hello World</h1>
+<h1>Name: @name, Age: @age</h1>
+<h1>total: @total</h1>
+<h1>@txt</h1>
+<table border="1">
+    <tr>
+        <th width="100px">Name</th>
+        <td width="100px">Value</td>
+    </tr>
+    <tr>
+        <td>Day</td>
+        <td>@DateTime.Now.Day</td>
+    </tr>
+    <tr>
+        <td>Hour</td>
+        <td>@DateTime.Now.Hour</td>
+    </tr>
+    <tr>
+        <td>Minute</td>
+        <td>@DateTime.Now.Minute</td>
+    </tr>
+    <tr>
+        <td>Second</td>
+        <td>@DateTime.Now.Second</td>
+    </tr>
+</table>
+
+//for loop
+<ul>
+    @for(var i = 1; i<=20; i++)
+            {
+                <li>Line @i</li>
+            }
+</ul>
+
+//forEach
+<ol>
+    @foreach (var d in Request.ServerVariables) //All asp server.
+    {
+        <li>@d</li>
+    }
+</ol>
+//while
+@{ 
+    var j = 0;
+        while (j < 5)
+            {
+                <p>@j</p>
+        j++;
+    }
+}
+//Array
+@{
+    string[] member = { "Kimeng", "Saven", "Sophon" };
+    int position = Array.IndexOf(member, "Sophon")+1; 
+    int len = member.Length;
+}
+@foreach(var m in member)
+            {
+                <p>@m</p>
+            }
+<p>Sophon is at Position: @position</p>
+<p>Total Member = @len</p>
